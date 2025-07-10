@@ -1,40 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+#  Admin Dashboard - Car Listings Management (Next.js)
 
-## Getting Started
+This is a functional Admin Dashboard built using modern web technologies like **Next.js**, **SQLite**, and **TailwindCSS**.  
+It allows admins to manage user-submitted car rental listings with features like approval, rejection, editing, audit trail, and toast feedback.
 
-First, run the development server:
 
-```bash
+ # Features
+ 
+- Admin login (mocked with hardcoded credentials)
+
+- Dashboard displaying all car rental listings
+
+- Approve, Reject, and  Edit each listing
+
+- Search listings by title and filter by status (pending / approved / rejected)
+
+- Audit Trail showing logs of all admin actions with timestamps
+
+- Pagination with 5 listings per page
+
+- Toast feedback messages after actions like approval or update
+
+
+# Tech Stack
+
+- Next.js with getServerSideProps
+
+- SQLite using better-sqlite3
+
+- React Context API for auth and feedback
+
+- Tailwind CSS for styling
+
+- Custom API Routes (/api/listings, /api/audit)
+
+# How to Use Locally
+
+1. Clone and Install
+
+git clone https://github.com/your-username/admin-dashboard.git
+cd admin-dashboard
+npm install
+
+2. Seed the database
+
+node db/seed.js
+
+3. Run the app
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The dashboard will be running on http://localhost:3000
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+# Admin Credentials
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Username      Password
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+admin         admin123
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Folder Overview
+- The project is structured in a simple and clean way:
 
-## Learn More
+- pages/ – This contains all the routes:
 
-To learn more about Next.js, take a look at the following resources:
+- index.js for the login page
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+- dashboard.js for the admin panel
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- audit-trail.js to view action logs
 
-## Deploy on Vercel
+- Also includes API routes under pages/api/ for listing actions and audit logs
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- db/ – Contains the SQLite database setup and a script (seed.js) to populate initial data
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+- context/ – Includes context files for managing authentication and feedback messages globally
+
+- components/ – Reusable UI components like the toast notification
+
+- styles/ – Tailwind CSS global style
+
+##  Screenshots
+
+**Login Page**  
+![Login](./public/screenshots/login.png)
+
+**Dashboard**  
+![Dashboard](./public/screenshots/dashboard.png)
+
+**Edit Mode (Inline Form)**  
+*Shows editing a listing directly in the table*  
+![Edit Mode](./public/screenshots/edit-mode.png)
+
+**Toast Message (Feedback Notification)**  
+*Success message after approving/editing a listing*  
+![Toast](./public/screenshots/toast.png)
+
+**Audit Trail**  
+![Audit](./public/screenshots/audit.png)
+
+
+##  Demo Video
+Here’s a short walkthrough of the app:  
+ [Watch on Google Drive](https://drive.google.com/file/d/1awU4mRq5ql9EdIlnv1c7S3Rl5H5Yyzw2/view?usp=sharing)
+
