@@ -173,7 +173,6 @@ export default function DashboardPage({ initialListings }) {
   const onAction = async (id, action) => {
     const listing = listings.find((item) => item.id === id);
 
-    // Prevent duplicate action if status already matches
     const currentStatus = listing?.status?.toLowerCase();
     const targetStatus = action === 'approve' ? 'approved' : 'rejected';
 
