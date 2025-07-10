@@ -171,6 +171,17 @@ export default function DashboardPage({ initialListings }) {
   };
 
   const onAction = async (id, action) => {
+    const listing = listings.find((item) => item.id === id);
+
+    // Prevent duplicate action if status already matches
+    const currentStatus = listing?.status?.toLowerCase();
+    const targetStatus = action === 'approve' ? 'approved' : 'rejected';
+
+    if (currentStatus === targetStatus) {
+      showMessage(`Listing is already ${targetStatus}`);
+      return;
+    }
+
     try {
       const res = await fetch('/api/listings', {
         method: 'PATCH',
@@ -193,6 +204,7 @@ export default function DashboardPage({ initialListings }) {
       showMessage('Failed to update listing');
     }
   };
+
 
   return (
     <div className="p-6">
@@ -279,9 +291,8 @@ export default function DashboardPage({ initialListings }) {
             <button
               key={idx}
               onClick={() => setCurrentPage(idx + 1)}
-              className={`px-3 py-1 border rounded ${
-                currentPage === idx + 1 ? 'bg-blue-500 text-white' : ''
-              }`}
+              className={`px-3 py-1 border rounded ${currentPage === idx + 1 ? 'bg-blue-500 text-white' : ''
+                }`}
             >
               {idx + 1}
             </button>
