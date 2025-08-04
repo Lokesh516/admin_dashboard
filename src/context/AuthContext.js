@@ -14,7 +14,7 @@ export function AuthProvider({ children }) {
     const storedUser = localStorage.getItem('user');
     if (storedAuth && storedUser) {
       setIsAuthenticated(true);
-      setUser(JSON.parse(storedUser));
+      setUser(JSON.parse(storedUser))
     }
     setLoading(false);
   }, []);
